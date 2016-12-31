@@ -18,3 +18,4 @@ A "home-brewed" assistant with natural language processing, smartHome integratio
 
 ##Dependancies
 - https://github.com/Uberi/speech_recognition
+- pyAudio

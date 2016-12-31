@@ -6,6 +6,10 @@ class VoiceInputHandler(object):
 
     def __init__(self):
         self.r = sr.Recognizer()
+        with sr.Microphone() as source:
+            # listen for 1 second to calibrate the energy threshold for ambient
+            # noise levels
+            self.r.adjust_for_ambient_noise(source)
 
     def getVoice(self):
         with sr.Microphone() as source:
@@ -32,7 +36,6 @@ class VoiceInputHandler(object):
         else:
             try:
                 text = self.r.recognize_google(audio)
-
             except sr.UnknownValueError:
                 print("Engine could not process the speech")
             except sr.RequestError as e:
