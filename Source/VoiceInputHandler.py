@@ -20,7 +20,7 @@ class VoiceInputHandler(object):
 
     def getText(self, audio):
         # Toggles use of Houndify.
-        usingHound = False
+        usingHound = True
         text = ""
 
         if usingHound:
