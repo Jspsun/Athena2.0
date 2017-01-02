@@ -21,7 +21,7 @@ class VoiceInputHandler(object):
     def getText(self, audio):
         # Toggles use of speech to text api
         # 1 for houd, 2 for google and 3 for sphinx
-        api = 3
+        api = 1
         text = ""
 
         if api == 1:
