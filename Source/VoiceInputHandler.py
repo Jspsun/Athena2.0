@@ -19,11 +19,12 @@ class VoiceInputHandler(object):
         return audio
 
     def getText(self, audio):
-        # Toggles use of Houndify.
-        usingHound = True
+        # Toggles use of speech to text api
+        # 1 for houd, 2 for google and 3 for sphinx
+        api = 3
         text = ""
 
-        if usingHound:
+        if api == 1:
             try:
                 text = self.r.recognize_houndify(
                     audio,  client_id=config.HOUNDIFY_CLIENT_ID, client_key=config.HOUNDIFY_CLIENT_KEY)
@@ -33,7 +34,7 @@ class VoiceInputHandler(object):
                 print(
                     "Could not request results from Houndify service; {0}".format(e))
 
-        else:
+        elif api == 2:
             try:
                 text = self.r.recognize_google(audio)
             except sr.UnknownValueError:
@@ -41,6 +42,15 @@ class VoiceInputHandler(object):
             except sr.RequestError as e:
                 print(
                     "Could not request results from Google Speech Recognition service; {0}".format(e))
+
+        else:
+            try:
+                text = self.r.recognize_sphinx(audio)
+            except sr.UnknownValueError:
+                print("Sphinx could not understand audio")
+            except sr.RequestError as e:
+                print("Sphinx error; {0}".format(e))
+
         return text
 
     def getInput(self):
