@@ -20,3 +20,4 @@ A "home-brewed" assistant with natural language processing, smartHome integratio
 - https://github.com/Uberi/speech_recognition
 - pyAudio
 - wemo api (ouimeaux)
+- PocketSphinx(use $ brew install cmu-pocketsphinx)
