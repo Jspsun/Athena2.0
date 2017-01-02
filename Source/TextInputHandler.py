@@ -1,6 +1,9 @@
 from WEMOListener import WEMOListener
 
-lights = ["lights", "light"]
+lightsOn = ["lights on", "light on", "on the lights", "on the light"]
+lightsOff = ["lights off", "light off",
+             "off the lights", "off the light"]
+lightsToggle = ["lights", "light"]
 LightSwitch = WEMOListener()
 
 
@@ -9,19 +12,32 @@ class TextInputHandler(object):
     def __init__(self):
         return
 
-        # determines which command to be run
+    # TODO BUILD HELPER METHOD TO IMPROVE READABILITY
+    # determines which command to be run
     def getCommand(self, text):
-        inputArray = text.split()
 
-        # Check if the command is to open lights
-        for trigger in lights:
-            if trigger in inputArray:
-                return "lights"
+        # Check if the command is to turn on lights
+        for trigger in lightsOn:
+            if trigger in text:
+                return "lightsOn"
+        # check to see if command is to turn off lights
+        for trigger in lightsOff:
+            if trigger in text:
+                return "lightsOff"
+        # check to see if command is to toggle lights
+        for trigger in lightsToggle:
+            if trigger in text:
+                return "lightsToggle"
         return None
 
     # runs commands
     def runCommand(self, command):
-        if command == "lights":
+
+        if command == "lightsOn":
+            LightSwitch.lightsOn()
+        elif command == "lightsOff":
+            LightSwitch.lightsOff()
+        elif command == "lightsToggle":
             LightSwitch.toggle()
 
     def process(self, text):
