@@ -10,24 +10,28 @@ LightSwitch = WEMOListener()
 class TextInputHandler(object):
 
     def __init__(self):
+        self.text = ""
         return
 
-    # TODO BUILD HELPER METHOD TO IMPROVE READABILITY
+        # helper method to improve readability
+    def commandIs(self, arrayToCheck):
+        for trigger in arrayToCheck:
+            if trigger in self.text:
+                return True
+        return False
+
     # determines which command to be run
     def getCommand(self, text):
-
+        self.text = text
         # Check if the command is to turn on lights
-        for trigger in lightsOn:
-            if trigger in text:
-                return "lightsOn"
+        if self.commandIs(lightsOn):
+            return "lightsOn"
         # check to see if command is to turn off lights
-        for trigger in lightsOff:
-            if trigger in text:
-                return "lightsOff"
+        if self.commandIs(lightsOff):
+            return "lightsOff"
         # check to see if command is to toggle lights
-        for trigger in lightsToggle:
-            if trigger in text:
-                return "lightsToggle"
+        if self.commandIs(lightsToggle):
+            return "lightsToggle"
         return None
 
     # runs commands
@@ -40,5 +44,7 @@ class TextInputHandler(object):
         elif command == "lightsToggle":
             LightSwitch.toggle()
 
+    # function that gets and runs the apropriate function based on given text
+    # input
     def process(self, text):
         self.runCommand(self.getCommand(text))
