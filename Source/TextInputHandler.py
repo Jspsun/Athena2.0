@@ -21,6 +21,7 @@ class TextInputHandler(object):
         return False
 
     # determines which command to be run
+    # TODO map keys to functions to improve future scalability
     def getCommand(self, text):
         self.text = text
         # Check if the command is to turn on lights
