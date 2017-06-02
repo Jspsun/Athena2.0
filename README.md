@@ -1,9 +1,9 @@
 # Athena Voice Bot
 A "home-brewed" assistant with natural language processing, smartHome integration and talk-back functionality. There are some things that Amazon Echo and Google Home wont let me do so I decided to build my own system.
+   
+Athena2.0 is depreciated. I've rebuilt it [here](https://github.com/Jspsun/Athena)
 
-As a note: this project is very much still in progress. I will try to update the readme as I go but just in this case, my priority is to have everything roughly implemented and will only roughly document. Once everything is ready to deploy, I will be releasing full documentation. Until then, I will only have small notes on the readme as well as my own notes on the side.
-
-*Based on a past personal [project: Athena 1.0](https://github.com/Jspsun/AthenaVoiceAssistant)*   
+*Based on a past personal [project: Athena 1.0](https://github.com/Jspsun/AthenaVoiceAssistant)* 
 This overhaul of the bot uses far better contextual and natural langauge processing.
 
 
